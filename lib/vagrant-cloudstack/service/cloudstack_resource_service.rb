@@ -26,13 +26,13 @@ module VagrantPlugins
           end
 
           full_response = @cloudstack_compute.send("list_#{pluralised_type}".to_sym, options)
-          puts full_response
           full_response["list#{pluralised_type.tr('_', '')}response"][resource_type.tr('_', '')]
         end
 
         def resourcefield_to_id(resource_type, resource_field, resource_field_value, options={})
           @ui.info("Fetching UUID for #{resource_type} with #{resource_field} '#{resource_field_value}'")
           full_response = translate_from_to(resource_type, options)
+          @ui.info("Response: #{full_response}")
           result        = full_response.find {|type| type[resource_field] == resource_field_value }
           result['id']
         end
