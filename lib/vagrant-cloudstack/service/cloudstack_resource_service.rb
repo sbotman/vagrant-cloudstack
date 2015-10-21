@@ -26,6 +26,7 @@ module VagrantPlugins
           end
 
           full_response = @cloudstack_compute.send("list_#{pluralised_type}".to_sym, options)
+          puts full_response
           full_response["list#{pluralised_type.tr('_', '')}response"][resource_type.tr('_', '')]
         end
 
