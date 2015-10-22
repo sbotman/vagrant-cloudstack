@@ -32,6 +32,7 @@ module VagrantPlugins
         def resourcefield_to_id(resource_type, resource_field, resource_field_value, options={})
           @ui.info("Fetching UUID for #{resource_type} with #{resource_field} '#{resource_field_value}'")
           full_response = translate_from_to(resource_type, options)
+          @ui.info("full_response: #{full_response}")
           result        = full_response.find {|type| type[resource_field] == resource_field_value }
           result['id']
         end
